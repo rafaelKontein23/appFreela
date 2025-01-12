@@ -1,9 +1,6 @@
-package com.freela.freelancer.Trabalhadores.Etity;
+package com.freela.freelancer.Trabalhadores.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
@@ -22,6 +19,7 @@ public class TrabalhadorEntidade {
     @Length(min = 1, message = "Seu data de nascimento não é valido")
     private String dataNascimento;
     @Length(min = 11, max = 11, message = "Seu cpf não é valido")
+    @Column(name = "cpf")
     private String cpf;
 
     @Email(message = "Seu email não é valido")
