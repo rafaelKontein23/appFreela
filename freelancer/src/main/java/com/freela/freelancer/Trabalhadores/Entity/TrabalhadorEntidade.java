@@ -65,15 +65,17 @@ public class TrabalhadorEntidade {
     @Length(min = 1, message = "Seu tipoConta não é valido")
     private String tipoConta;
 
+    @Length(min = 3, message = "Sua senha não é valido")
+    private String senha;
+
     public TrabalhadorEntidade() {
     }
 
-    public TrabalhadorEntidade(String nomeCompleto, String dataNascimento, String cpf,
-                               String email, String numero, String cep,
-                               String endereco, String bairro,
-                               String cidade, String estado, String profissao,
-                               String especialidade, String regiaoAtendida,
-                               String banco, String agencia, String conta, String tipoConta) {
+    public TrabalhadorEntidade(UUID id, String nomeCompleto, String dataNascimento, String cpf, String email, String numero,
+                               String cep, String endereco, String bairro, String cidade, String estado, String profissao,
+                               String especialidade, String regiaoAtendida, String banco, String agencia, String conta,
+                               String tipoConta, String senha) {
+        this.id = id;
         this.nomeCompleto = nomeCompleto;
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
@@ -91,6 +93,15 @@ public class TrabalhadorEntidade {
         this.agencia = agencia;
         this.conta = conta;
         this.tipoConta = tipoConta;
+        this.senha = senha;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getNomeCompleto() {
@@ -227,5 +238,13 @@ public class TrabalhadorEntidade {
 
     public void setTipoConta(String tipoConta) {
         this.tipoConta = tipoConta;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

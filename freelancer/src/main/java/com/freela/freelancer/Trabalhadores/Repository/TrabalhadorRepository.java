@@ -8,6 +8,6 @@ import java.util.UUID;
 
 public interface TrabalhadorRepository extends JpaRepository<TrabalhadorEntidade, UUID> {
 
-    Optional<TrabalhadorEntidade>  findByCpf(String cpf); // Parâmetros ajustados para camelCase
+    Optional<TrabalhadorEntidade>  findByCpf(String cpf);
 
 }

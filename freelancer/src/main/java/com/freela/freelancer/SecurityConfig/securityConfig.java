@@ -21,6 +21,7 @@ public class securityConfig  {
             httpSecurity.csrf(crsf -> crsf.disable() )
                     .authorizeHttpRequests(auth ->{
                         auth.requestMatchers("/trabalhador/cadastra").permitAll()
+                                .requestMatchers("trabalhador/login").permitAll()
                                 .requestMatchers("/swagger-ui/index.html").permitAll().
                                 requestMatchers(SweggerList).permitAll();
                         // aqui vc esta liberando acesso para todos acessar esse endPoints
