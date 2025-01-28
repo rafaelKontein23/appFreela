@@ -2,6 +2,7 @@ package com.freela.freelancer.Trabalhadores.Controller;
 
 
 import com.freela.freelancer.Trabalhadores.DTO.LoginDTO;
+import com.freela.freelancer.Trabalhadores.DTO.RespostaLoginDTO;
 import com.freela.freelancer.Trabalhadores.Entity.TrabalhadorEntidade;
 import com.freela.freelancer.Trabalhadores.Usecase.TrabalhadorUseCase;
 import com.freela.freelancer.Trabalhadores.execoes.TrablhadorExecoes;
@@ -38,8 +39,13 @@ public class ControllerTrabalhador {
     @PostMapping("/login")
     @Tag(description = "login um trabalhador", name = "loginTrabalhador")
     public ResponseEntity<String> loginTrabalhador(@Valid @RequestBody LoginDTO trabalhador){
-
-        return  null;
+        try {
+            var result = controllerTrabalhadorUseCase.logaCanditado(trabalhador);
+            return ResponseEntity.ok(result.toString());
+        }catch (Exception e){
+            e.printStackTrace();
+            return  ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 

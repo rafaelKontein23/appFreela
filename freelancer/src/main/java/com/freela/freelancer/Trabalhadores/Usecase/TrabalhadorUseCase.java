@@ -3,6 +3,7 @@ package com.freela.freelancer.Trabalhadores.Usecase;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.freela.freelancer.Trabalhadores.DTO.LoginDTO;
+import com.freela.freelancer.Trabalhadores.DTO.RespostaLoginDTO;
 import com.freela.freelancer.Trabalhadores.Entity.TrabalhadorEntidade;
 import com.freela.freelancer.Trabalhadores.Repository.TrabalhadorRepository;
 import com.freela.freelancer.Trabalhadores.execoes.LoginTrabalhadorExepiton;
@@ -39,7 +40,7 @@ public class TrabalhadorUseCase {
         trabalhadorRepository.save(trabalhadorEntidade);
     }
 
-    public void logaCanditado(LoginDTO loginDTO){
+    public RespostaLoginDTO logaCanditado(LoginDTO loginDTO){
         var usuario = trabalhadorRepository.findByCpf(loginDTO.getCpf()).orElseThrow(() -> {
             throw new LoginTrabalhadorExepiton("Usuario ou sneha incorretos");
         } );
@@ -49,10 +50,11 @@ public class TrabalhadorUseCase {
             throw new LoginTrabalhadorExepiton("Usuario ou sneha incorretos");
         }
         Algorithm algorithm = Algorithm.HMAC256(chaveSecreta);
-        var token = JWT.create().withIssuer("NomeDAempresa").withExpiresAt(Instant.now().plus(Duration.ofHours(2))) // pra colocar um tempo de duração para o token
+        var token = JWT.create().withIssuer("NomeDAempresa").withExpiresAt(Instant.now().plus(Duration.ofHours(2)))
                 .withClaim("roles", Arrays.asList("empresa"))
                 .withSubject(usuario.getId().toString()).sign(algorithm);
-        // continuar aqui, fazer o o objeto de retotno do login
+
+        return new RespostaLoginDTO(token, usuario.getCpf());
 
     }
 
