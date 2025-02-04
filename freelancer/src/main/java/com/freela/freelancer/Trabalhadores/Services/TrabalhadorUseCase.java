@@ -1,4 +1,4 @@
-package com.freela.freelancer.Trabalhadores.Usecase;
+package com.freela.freelancer.Trabalhadores.Services;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -44,8 +44,9 @@ public class TrabalhadorUseCase {
         var usuario = trabalhadorRepository.findByCpf(loginDTO.getCpf()).orElseThrow(() -> {
             throw new LoginTrabalhadorExepiton("Usuario ou sneha incorretos");
         } );
-        var senhaEncote  = passwordEncoder.encode( loginDTO.getSenha());
-        var senhaVerdade = senhaEncote.equals( usuario.getSenha());
+
+        var senhaVerdade = passwordEncoder.matches(loginDTO.getSenha(), usuario.getSenha()); // para verifica se a senha está coreeta
+
         if(!senhaVerdade){
             throw new LoginTrabalhadorExepiton("Usuario ou sneha incorretos");
         }

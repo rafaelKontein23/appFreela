@@ -22,6 +22,7 @@ public class securityConfig  {
                     .authorizeHttpRequests(auth ->{
                         auth.requestMatchers("/trabalhador/cadastra").permitAll()
                                 .requestMatchers("trabalhador/login").permitAll()
+                                .requestMatchers("cidades/**").permitAll()
                                 .requestMatchers("/swagger-ui/index.html").permitAll().
                                 requestMatchers(SweggerList).permitAll();
                         // aqui vc esta liberando acesso para todos acessar esse endPoints

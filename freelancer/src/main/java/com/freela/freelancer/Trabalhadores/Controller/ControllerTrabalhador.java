@@ -2,10 +2,8 @@ package com.freela.freelancer.Trabalhadores.Controller;
 
 
 import com.freela.freelancer.Trabalhadores.DTO.LoginDTO;
-import com.freela.freelancer.Trabalhadores.DTO.RespostaLoginDTO;
 import com.freela.freelancer.Trabalhadores.Entity.TrabalhadorEntidade;
-import com.freela.freelancer.Trabalhadores.Usecase.TrabalhadorUseCase;
-import com.freela.freelancer.Trabalhadores.execoes.TrablhadorExecoes;
+import com.freela.freelancer.Trabalhadores.Services.TrabalhadorUseCase;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +27,6 @@ public class ControllerTrabalhador {
         try {
             controllerTrabalhadorUseCase.salvaCadastroTrabalhador(trabalhador);
             return ResponseEntity.ok("Cadastro realizado com sucesso");
-
         }catch (Exception e){
             e.printStackTrace();
             return  ResponseEntity.badRequest().body(e.getMessage());
@@ -38,15 +35,13 @@ public class ControllerTrabalhador {
 
     @PostMapping("/login")
     @Tag(description = "login um trabalhador", name = "loginTrabalhador")
-    public ResponseEntity<String> loginTrabalhador(@Valid @RequestBody LoginDTO trabalhador){
+    public ResponseEntity<Object> loginTrabalhador(@Valid @RequestBody LoginDTO trabalhador){
         try {
             var result = controllerTrabalhadorUseCase.logaCanditado(trabalhador);
-            return ResponseEntity.ok(result.toString());
+            return ResponseEntity.ok(result);
         }catch (Exception e){
             e.printStackTrace();
             return  ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
-
 }
