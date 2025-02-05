@@ -1,14 +1,12 @@
-package com.freela.freelancer.cidades.controller;
+package com.freela.freelancer.Ibge.controller;
 
 
-import com.freela.freelancer.cidades.Services.ServiceCidade;
+import com.freela.freelancer.Ibge.Services.ServiceCidade;
+import com.freela.freelancer.Ibge.Services.ServicesCep;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/cidades")
@@ -16,6 +14,9 @@ public class ControllerCidades {
 
     @Autowired
     private ServiceCidade serviceCidade;
+
+    @Autowired
+    private ServicesCep servicesCep;
 
 
     @PostMapping("/{uf}")
@@ -28,6 +29,18 @@ public class ControllerCidades {
             e.printStackTrace();
             return  ResponseEntity.badRequest().body(e.getMessage());
 
+        }
+    }
+    @GetMapping("/{CEP}/json/")
+    @Tag(description =  "Busca cep no via cep", name = "cep")
+    public ResponseEntity<Object> buscaCep(@PathVariable String CEP){
+        try {
+            var resultado = servicesCep.gerCep(CEP);
+            return ResponseEntity.ok(resultado);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 

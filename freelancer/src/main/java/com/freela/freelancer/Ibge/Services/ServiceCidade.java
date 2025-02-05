@@ -1,8 +1,9 @@
-package com.freela.freelancer.cidades.Services;
+package com.freela.freelancer.Ibge.Services;
 
 
 import com.freela.freelancer.Constantantes.Urls;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.freela.freelancer.Ibge.DTO.MunicipioDTO;
+import com.freela.freelancer.Ibge.Execoes.ExceptionCidade;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -14,20 +15,25 @@ public class  ServiceCidade{
 
     private final WebClient webClient;
 
+
     public ServiceCidade(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.baseUrl(Urls.urlBaseIbge).build();
     }
 
 
-    public List<String> getMunicipiosPorEstado(String uf){
-        var teste = webClient.get()
+    public List<MunicipioDTO> getMunicipiosPorEstado(String uf){
+        var resultado = webClient.get()
                 .uri("/estados/{uf}/municipios", uf)
                 .retrieve()
-                .bodyToFlux(String.class)
+                .bodyToFlux(MunicipioDTO.class)
                 .collectList()
-                .block(); // Bloqueia a thread (pode ser removido se for chamado de forma reativa)
+                .block();
 
-        return teste;
+        if(resultado.isEmpty() || resultado == null ){
+            throw  new ExceptionCidade();
+        }
+
+        return resultado;
 
     }
 
