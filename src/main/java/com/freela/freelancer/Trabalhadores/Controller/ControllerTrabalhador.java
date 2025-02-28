@@ -33,7 +33,7 @@ public class ControllerTrabalhador {
         }
     }
 
-    @PostMapping("/login")
+    @PostMapping("/login/{id}")
     @Tag(description = "login um trabalhador", name = "loginTrabalhador")
     public ResponseEntity<Object> loginTrabalhador(@Valid @RequestBody LoginDTO trabalhador){
         try {

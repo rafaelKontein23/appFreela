@@ -21,7 +21,7 @@ public class securityConfig  {
             httpSecurity.csrf(crsf -> crsf.disable() )
                     .authorizeHttpRequests(auth ->{
                         auth.requestMatchers("/trabalhador/cadastra").permitAll()
-                                .requestMatchers("trabalhador/login").permitAll()
+                                .requestMatchers("/trabalhador/login").permitAll()
                                 .requestMatchers("cidades/**").permitAll()
                                 .requestMatchers("banco/**").permitAll()
                                 .requestMatchers("/swagger-ui/index.html").permitAll().
