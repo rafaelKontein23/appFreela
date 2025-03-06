@@ -1,11 +1,19 @@
 package com.freela.freelancer.Feed.Entity;
 
 import com.freela.freelancer.Trabalhadores.Entity.TrabalhadorEntidade;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
+import java.util.UUID;
+
+@Entity
 public class ComentariosFeed {
+
+    @Id
+    @GeneratedValue (
+            strategy = GenerationType.UUID
+
+    )
+    private UUID id;
 
     private String nomeCliente;
     private String fotoPerfilCliente;
