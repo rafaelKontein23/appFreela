@@ -18,7 +18,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("*")
-                        .allowedOrigins("*") // Libera para qualquer origem (substitua pelo seu domínio se precisar)
+                        .allowedOrigins("https://api.appfreelancer.store") // Libera para qualquer origem (substitua pelo seu domínio se precisar)
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*");
             }
