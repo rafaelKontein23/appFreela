@@ -28,7 +28,7 @@ public class securityConfig  {
                                 .requestMatchers("/swagger-ui/index.html").permitAll()
                                 .requestMatchers(SweggerList).permitAll();
                         auth.anyRequest().authenticated();
-                    });
+                    }).cors();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
