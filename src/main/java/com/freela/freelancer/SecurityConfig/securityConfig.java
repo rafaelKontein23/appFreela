@@ -18,19 +18,17 @@ public class securityConfig  {
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         try {
-            httpSecurity.csrf(crsf -> crsf.disable() )
-                    .authorizeHttpRequests(auth ->{
+            httpSecurity
+                    .csrf(crsf -> crsf.disable())
+                    .authorizeHttpRequests(auth -> {
                         auth.requestMatchers("/trabalhador/cadastra").permitAll()
                                 .requestMatchers("/trabalhador/login").permitAll()
                                 .requestMatchers("/cidades/**").permitAll()
                                 .requestMatchers("/banco/**").permitAll()
-                                .requestMatchers("/swagger-ui/index.html").permitAll().
-                                requestMatchers(SweggerList).permitAll();
-                        // aqui vc esta liberando acesso para todos acessar esse endPoints
-                        auth.anyRequest().permitAll(); // aqui vc esta bloqueando esse endpoint. pq para acessar essa rota o usuario tem que esta logado por exemplo
+                                .requestMatchers("/swagger-ui/index.html").permitAll()
+                                .requestMatchers(SweggerList).permitAll();
+                        auth.anyRequest().authenticated();
                     });
-
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
