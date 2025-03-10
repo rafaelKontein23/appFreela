@@ -31,6 +31,7 @@ public class ControllerCidades {
 
         }
     }
+    @CrossOrigin(origins = "*")
     @GetMapping("/{CEP}/json/")
     @Tag(description =  "Busca cep no via cep", name = "cep")
     public ResponseEntity<Object> buscaCep(@PathVariable String CEP){
