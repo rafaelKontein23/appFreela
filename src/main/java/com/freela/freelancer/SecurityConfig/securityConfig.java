@@ -27,7 +27,7 @@ public class securityConfig  {
                                 .requestMatchers("/swagger-ui/index.html").permitAll().
                                 requestMatchers(SweggerList).permitAll();
                         // aqui vc esta liberando acesso para todos acessar esse endPoints
-                        auth.anyRequest().authenticated(); // aqui vc esta bloqueando esse endpoint. pq para acessar essa rota o usuario tem que esta logado por exemplo
+                        auth.anyRequest().permitAll(); // aqui vc esta bloqueando esse endpoint. pq para acessar essa rota o usuario tem que esta logado por exemplo
                     });
 
 
