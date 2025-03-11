@@ -37,6 +37,7 @@ public class ControllerCidades {
     public ResponseEntity<Object> buscaCep(@PathVariable String CEP){
         try {
             var resultado = servicesCep.gerCep(CEP);
+
             return ResponseEntity.ok(resultado);
 
         }catch (Exception e){
