@@ -12,6 +12,8 @@ import java.util.List;
 
 @Configuration
 public class CorsConfig {
+
+
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {

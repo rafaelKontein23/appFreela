@@ -13,7 +13,7 @@ public class SweggerConfig {
 
     @Bean
     public OpenAPI openAPI(){
-        return new OpenAPI().info(new Info().title("app Frealanccer").description("api para gerenciamento de caditados e vagas").version("1.0.0"))
+        return new OpenAPI().info(new Info().title("app Frealanccer Luan Vagabundo ").description("api para gerenciamento de caditados e vagas").version("1.0.0"))
                 .schemaRequirement("jwt_token",securityScheme());
 
 
