@@ -28,15 +28,23 @@ public class TrabalhadorUseCase {
     private PasswordEncoder passwordEncoder;
 
 
-    public void salvaCadastroTrabalhador(TrabalhadorEntidade trabalhadorEntidade){
+    public void salvaCadastroTrabalhador(TrabalhadorEntidade trabalhadorEntidade) {
+        // Verifica se já existe um trabalhador com o mesmo CPF
         trabalhadorRepository.findByCpf(trabalhadorEntidade.getCpf())
                 .ifPresent(usuario -> {
-                    throw new TrablhadorExecoes();
+                    throw new TrablhadorExecoes(); // Certifique-se de que TrablhadorExecoes está corretamente definida
                 });
 
-        var senhaEncode= passwordEncoder.encode(trabalhadorEntidade.getSenha());
+        // Garante que o ID seja nulo para novas entidades
+        if (trabalhadorEntidade.getId() != null) {
+            trabalhadorEntidade.setId(null); // Força a criação de uma nova entidade
+        }
+
+        // Codifica a senha
+        var senhaEncode = passwordEncoder.encode(trabalhadorEntidade.getSenha());
         trabalhadorEntidade.setSenha(senhaEncode);
 
+        // Salva a entidade
         trabalhadorRepository.save(trabalhadorEntidade);
     }
 

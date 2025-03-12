@@ -10,72 +10,79 @@ import java.util.UUID;
 public class TrabalhadorEntidade {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Length(min = 5, message = "Seu nome não é valido")
+    @Length(min = 5, message = "Seu nome não é válido")
     private String nomeCompleto;
 
-    @Length(min = 1, message = "Seu data de nascimento não é valido")
+    @Length(min = 1, message = "Sua data de nascimento não é válida")
     private String dataNascimento;
-    @Length(min = 11, max = 11, message = "Seu cpf não é valido")
-    @Column(name = "cpf")
+
+    @Length(min = 11, max = 11, message = "Seu CPF não é válido")
+    @Column(unique = true, nullable = false)
     private String cpf;
 
-    @Email(message = "Seu email não é valido")
+    @Email(message = "Seu email não é válido")
+    @Column(unique = true, nullable = false)
     private String email;
 
-    @Length(min = 1, message = "Seu numero da casa não é valido")
+    @Length(min = 1, message = "Seu número da casa não é válido")
     private String numero;
 
-    @Length(min = 8, message = "Seu cep não é valido")
+    @Length(min = 8, message = "Seu CEP não é válido")
     private String cep;
 
-    @Length(min = 1, message = "Seu endereço não é valido")
+    @Length(min = 1, message = "Seu endereço não é válido")
     private String endereco;
 
-    @Length(min = 1, message = "Seu bairro não é valido")
+    @Length(min = 1, message = "Seu bairro não é válido")
     private String bairro;
 
-    @Length(min = 3, message = "Seu cidade não é valido")
+    @Length(min = 3, message = "Sua cidade não é válida")
     private String cidade;
 
-    @Length(min = 1, message = "Seu estado não é valido")
+    @Length(min = 1, message = "Seu estado não é válido")
     private String estado;
 
-    @Length(min = 3, message = "Seu profissao não é valido")
+    @Length(min = 3, message = "Sua profissão não é válida")
     private String profissao;
 
-    @Length(min = 1, message = "Seu especialidade não é valido")
+    @Length(min = 1, message = "Sua especialidade não é válida")
     private String especialidade;
 
-    @Length(min = 1, message = "Seu regiaoAtendida não é valido")
+    @Length(min = 1, message = "Sua região atendida não é válida")
     private String regiaoAtendida;
 
-
-    @Length(min = 1, message = "Seu banco não é valido")
+    @Length(min = 1, message = "Seu banco não é válido")
     private String banco;
 
-    @Length(min = 1, message = "Seu agencia não é valido")
+    @Length(min = 1, message = "Sua agência não é válida")
     private String agencia;
 
-    @Length(min = 1, message = "Seu conta não é valido")
+    @Length(min = 1, message = "Sua conta não é válida")
     private String conta;
 
-    @Length(min = 1, message = "Seu tipoConta não é valido")
+    @Length(min = 1, message = "Seu tipo de conta não é válido")
     private String tipoConta;
 
-    @Length(min = 3, message = "Sua senha não é valido")
+    @Length(min = 3, message = "Sua senha não é válida")
     private String senha;
 
+    @Version
+    @Column(nullable = false) // Garante que version nunca seja null no banco
+    private Integer version = 0; // Valor inicial padrão
+
+    // Construtor padrão exigido pelo Hibernate
     public TrabalhadorEntidade() {
+        this.version = 0; // Inicializa explicitamente
     }
 
-    public TrabalhadorEntidade(UUID id, String nomeCompleto, String dataNascimento, String cpf, String email, String numero,
-                               String cep, String endereco, String bairro, String cidade, String estado, String profissao,
-                               String especialidade, String regiaoAtendida, String banco, String agencia, String conta,
-                               String tipoConta, String senha) {
-        this.id = id;
+    // Construtor parametrizado
+    public TrabalhadorEntidade(String nomeCompleto, String dataNascimento, String cpf, String email, String numero,
+                               String cep, String endereco, String bairro, String cidade, String estado,
+                               String profissao, String especialidade, String regiaoAtendida, String banco,
+                               String agencia, String conta, String tipoConta, String senha) {
         this.nomeCompleto = nomeCompleto;
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;
@@ -94,8 +101,10 @@ public class TrabalhadorEntidade {
         this.conta = conta;
         this.tipoConta = tipoConta;
         this.senha = senha;
+        this.version = 0; // Inicializa version no construtor
     }
 
+    // Getters e Setters (mantidos como antes, exceto setVersion removido)
     public UUID getId() {
         return id;
     }
@@ -247,4 +256,13 @@ public class TrabalhadorEntidade {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    // Removido setVersion para evitar manipulação manual
+    // public void setVersion(Integer version) {
+    //     this.version = version;
+    // }
 }
