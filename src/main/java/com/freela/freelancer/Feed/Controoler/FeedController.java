@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/feed")
 public class FeedController {
 
-    @PostMapping("/feed")
+    @PostMapping("/busca/feed/trabalhador")
     @Tag(name = "feed", description = "feed do trabalhador")
     public ResponseEntity<Object> feed(@RequestBody FeedDTO  feedDTO){
 
