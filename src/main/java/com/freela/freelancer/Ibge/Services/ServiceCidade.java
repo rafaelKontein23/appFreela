@@ -24,6 +24,11 @@ public class ServiceCidade {
 
 
     public RespostaPadrao getMunicipiosPorEstado(String uf) {
+
+        if(uf.length() != 2){
+            return  new RespostaPadrao(false, null, Constantes.erroCidades);
+        }
+
         var resultado = webClient.get()
                 .uri("/estados/{uf}/municipios", uf)
                 .retrieve()

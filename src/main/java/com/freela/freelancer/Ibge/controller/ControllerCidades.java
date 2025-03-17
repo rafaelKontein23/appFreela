@@ -21,7 +21,6 @@ public class ControllerCidades {
 
 
     @PostMapping("/{uf}")
-
     public ResponseEntity<Object> buscaCidades(@PathVariable String uf){
         try {
             var resultado = serviceCidade.getMunicipiosPorEstado(uf);
@@ -29,9 +28,9 @@ public class ControllerCidades {
         }catch (Exception e){
             e.printStackTrace();
             return  ResponseEntity.badRequest().body(e.getMessage());
-
         }
     }
+
     @CrossOrigin(origins = "*")
     @GetMapping("/{CEP}/json/")
     public ResponseEntity<Object> buscaCep(@PathVariable String CEP){
@@ -43,6 +42,4 @@ public class ControllerCidades {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
-
 }

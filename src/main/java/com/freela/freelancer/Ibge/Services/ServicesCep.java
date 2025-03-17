@@ -19,6 +19,9 @@ public class ServicesCep {
     }
 
     public RespostaPadrao bucaCep(String cep){
+        if(cep.length() < 8){
+            return new RespostaPadrao(false, null, Constantes.erroCep);
+        }
         var resultado = webClient.get().
                   uri("/{cep}/json/", cep)
                 .retrieve()
