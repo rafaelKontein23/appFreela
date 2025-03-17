@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/trabalhador")
+@Tag(description = "cadastra um trabalhador", name = "cadastraTrabalhador")
+
 public class ControllerTrabalhador {
 
     @Autowired
@@ -22,7 +24,6 @@ public class ControllerTrabalhador {
 
 
     @PostMapping("/cadastra")
-    @Tag(description = "cadastra um trabalhador", name = "cadastraTrabalhador")
     public ResponseEntity<String> cadastraTrabalhador(@Valid @RequestBody TrabalhadorEntidade trabalhador){
         try {
             controllerTrabalhadorUseCase.salvaCadastroTrabalhador(trabalhador);
@@ -33,8 +34,7 @@ public class ControllerTrabalhador {
         }
     }
 
-    @PostMapping("/login/{id}")
-    @Tag(description = "login um trabalhador", name = "loginTrabalhador")
+    @PostMapping("/login")
     public ResponseEntity<Object> loginTrabalhador(@Valid @RequestBody LoginDTO trabalhador){
         try {
             var result = controllerTrabalhadorUseCase.logaCanditado(trabalhador);

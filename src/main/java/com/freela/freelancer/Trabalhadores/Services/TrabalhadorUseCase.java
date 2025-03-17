@@ -19,8 +19,8 @@ import java.util.Arrays;
 
 @Service
 public class TrabalhadorUseCase {
-    @Value("${security.token.secret}")
-    private String chaveSecreta ;
+    @Value("${security.token.secret.trabalhador}")
+    private  String cahveSecreta;
 
     @Autowired
     private TrabalhadorRepository trabalhadorRepository;
@@ -40,11 +40,9 @@ public class TrabalhadorUseCase {
             trabalhadorEntidade.setId(null); // Força a criação de uma nova entidade
         }
 
-        // Codifica a senha
         var senhaEncode = passwordEncoder.encode(trabalhadorEntidade.getSenha());
         trabalhadorEntidade.setSenha(senhaEncode);
 
-        // Salva a entidade
         trabalhadorRepository.save(trabalhadorEntidade);
     }
 
@@ -53,14 +51,14 @@ public class TrabalhadorUseCase {
             throw new LoginTrabalhadorExepiton("Usuario ou sneha incorretos");
         } );
 
-        var senhaVerdade = passwordEncoder.matches(loginDTO.getSenha(), usuario.getSenha()); // para verifica se a senha está coreeta
+        var senhaVerdade = passwordEncoder.matches(loginDTO.getSenha(), usuario.getSenha());
 
         if(!senhaVerdade){
             throw new LoginTrabalhadorExepiton("Usuario ou sneha incorretos");
         }
-        Algorithm algorithm = Algorithm.HMAC256(chaveSecreta);
+        Algorithm algorithm = Algorithm.HMAC256(cahveSecreta);
         var token = JWT.create().withIssuer("NomeDAempresa").withExpiresAt(Instant.now().plus(Duration.ofHours(2)))
-                .withClaim("roles", Arrays.asList("empresa"))
+                .withClaim("roles", Arrays.asList("trabalhador"))
                 .withSubject(usuario.getId().toString()).sign(algorithm);
 
         return new RespostaLoginDTO(token, usuario.getCpf());

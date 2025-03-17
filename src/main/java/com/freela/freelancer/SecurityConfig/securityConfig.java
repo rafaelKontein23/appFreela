@@ -1,5 +1,6 @@
 package com.freela.freelancer.SecurityConfig;
 
+import com.freela.freelancer.SecurityConfig.Filtros.FiltroTrabalhador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,11 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @EnableMethodSecurity
 @Configuration
 public class securityConfig  {
-    private static final String[] SweggerList = {"/swagger-ui/**","/v3/api-docs/**", "/swagger-resourse/**"};
+    private static final String[] SweggerList = {"/swagger-ui/**","/v3/api-docs/**",  "/v3/api-docs.yaml", "/swagger-resourse/**"};
+
+    @Autowired
+    private FiltroTrabalhador filtroTrabalhador;
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
@@ -28,7 +33,7 @@ public class securityConfig  {
                                 .requestMatchers("/swagger-ui/index.html").permitAll()
                                 .requestMatchers(SweggerList).permitAll();
                         auth.anyRequest().authenticated();
-                    });
+                    }).addFilterBefore(filtroTrabalhador, BasicAuthenticationFilter.class);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

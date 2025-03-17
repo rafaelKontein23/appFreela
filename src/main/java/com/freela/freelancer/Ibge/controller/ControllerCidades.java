@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/cidades")
+@Tag(description =  "Busca as cidades no api da ibge", name = "cidades")
 public class ControllerCidades {
 
     @Autowired
@@ -20,7 +21,7 @@ public class ControllerCidades {
 
 
     @PostMapping("/{uf}")
-    @Tag(description =  "Busca as cidades no api da ibge", name = "cidades")
+
     public ResponseEntity<Object> buscaCidades(@PathVariable String uf){
         try {
             var resultado = serviceCidade.getMunicipiosPorEstado(uf);
@@ -33,7 +34,6 @@ public class ControllerCidades {
     }
     @CrossOrigin(origins = "*")
     @GetMapping("/{CEP}/json/")
-    @Tag(description =  "Busca cep no via cep", name = "cep")
     public ResponseEntity<Object> buscaCep(@PathVariable String CEP){
         try {
             var resultado = servicesCep.gerCep(CEP);

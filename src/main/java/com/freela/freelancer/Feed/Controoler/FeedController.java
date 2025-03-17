@@ -2,21 +2,55 @@ package com.freela.freelancer.Feed.Controoler;
 
 
 import com.freela.freelancer.Feed.DTO.FeedDTO;
+import com.freela.freelancer.Feed.Repository.FeedRepository;
+import com.freela.freelancer.Feed.Services.FeedServices;
+import io.netty.handler.codec.json.JsonObjectDecoder;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/feed")
+@Tag(name = "feed", description = "feed do trabalhador")
+@SecurityRequirement(name = "BearerAuth") // Adiciona o Bearer Token automaticamente
 public class FeedController {
 
-    @PostMapping("/busca/feed/trabalhador")
-    @Tag(name = "feed", description = "feed do trabalhador")
-    public ResponseEntity<Object> feed(@RequestBody FeedDTO  feedDTO){
+    @Autowired
+    private FeedServices feedServices;
 
-        return ResponseEntity.ok("feed");
+    @PostMapping("/atualiza/feed/trabalhador")
+    @PreAuthorize("hasRole('trabalhador')")
+    public ResponseEntity<Object> atualizaFeed(@RequestBody FeedDTO  feedDTO, HttpServletRequest request){
+        try {
+            var trabalhadorId = UUID.fromString(String.format((String) request.getAttribute("id"))) ;
+            feedDTO.setIdTrabalhador(trabalhadorId);
+            feedServices.salvarFeed(feedDTO);
+            return ResponseEntity.ok("feed salvo com sucesso");
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body("Algo deu errado ");
+        }
     }
+
+    @GetMapping("/busca/feed/trabalhador")
+    public ResponseEntity<Object> buscaFeed(HttpServletRequest request){
+        try {
+            var  trbalhadorID = UUID.fromString((String)  request.getAttribute("id"));
+            var result = feedServices.buscaFeed(trbalhadorID);
+            return ResponseEntity.ok(result);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return  ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+
+
+
 }

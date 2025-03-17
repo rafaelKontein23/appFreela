@@ -26,5 +26,43 @@ public class FeedEntity {
     @OneToMany(mappedBy = "feedEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ComentariosFeed> comentariosFeed = new ArrayList<>();
 
+    public String getBanner() {
+        return Banner;
+    }
 
+    public void setBanner(String banner) {
+        Banner = banner;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public TrabalhadorEntidade getTrabalhadorEntidade() {
+        return trabalhadorEntidade;
+    }
+
+    public void setTrabalhadorEntidade(TrabalhadorEntidade trabalhadorEntidade) {
+        this.trabalhadorEntidade = trabalhadorEntidade;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public String getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(String fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
+    }
 }

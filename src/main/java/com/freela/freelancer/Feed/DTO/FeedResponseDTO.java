@@ -1,22 +1,10 @@
 package com.freela.freelancer.Feed.DTO;
 
-import com.freela.freelancer.Trabalhadores.Entity.TrabalhadorEntidade;
+public class FeedResponseDTO {
 
-import java.util.UUID;
-
-public class FeedDTO {
-    private UUID idTrabalhador;
     private String descricao;
-    private String fotoPerfil; // interligar com o s3 da amazon
-    private String Banner;
-
-    public UUID getIdTrabalhador() {
-        return idTrabalhador;
-    }
-
-    public void setIdTrabalhador(UUID idTrabalhador) {
-        this.idTrabalhador = idTrabalhador;
-    }
+    private String fotoPerfil;
+    private String banner;
 
     public String getDescricao() {
         return descricao;
@@ -35,10 +23,10 @@ public class FeedDTO {
     }
 
     public String getBanner() {
-        return Banner;
+        return banner;
     }
 
     public void setBanner(String banner) {
-        Banner = banner;
+        this.banner = banner;
     }
 }
