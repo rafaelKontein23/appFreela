@@ -24,10 +24,10 @@ public class ControllerTrabalhador {
 
 
     @PostMapping("/cadastra")
-    public ResponseEntity<String> cadastraTrabalhador(@Valid @RequestBody TrabalhadorEntidade trabalhador){
+    public ResponseEntity<Object> cadastraTrabalhador(@Valid @RequestBody TrabalhadorEntidade trabalhador){
         try {
-            controllerTrabalhadorUseCase.salvaCadastroTrabalhador(trabalhador);
-            return ResponseEntity.ok("Cadastro realizado com sucesso");
+            var result = controllerTrabalhadorUseCase.salvaCadastroTrabalhador(trabalhador);
+            return ResponseEntity.ok(result);
         }catch (Exception e){
             e.printStackTrace();
             return  ResponseEntity.badRequest().body(e.getMessage());

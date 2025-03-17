@@ -36,10 +36,8 @@ public class ControllerCidades {
     @GetMapping("/{CEP}/json/")
     public ResponseEntity<Object> buscaCep(@PathVariable String CEP){
         try {
-            var resultado = servicesCep.gerCep(CEP);
-
+            var resultado = servicesCep.bucaCep(CEP);
             return ResponseEntity.ok(resultado);
-
         }catch (Exception e){
             e.printStackTrace();
             return ResponseEntity.badRequest().body(e.getMessage());

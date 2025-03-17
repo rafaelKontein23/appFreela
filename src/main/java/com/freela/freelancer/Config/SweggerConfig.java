@@ -27,7 +27,7 @@ public class SweggerConfig {
 
     private SecurityScheme securityScheme() {
         return new SecurityScheme()
-                .name("BearerAuth") // Nome do esquema de segurança
+                .name("BearerAuth")
                 .type(SecurityScheme.Type.HTTP)
                 .scheme("bearer")
                 .bearerFormat("JWT")

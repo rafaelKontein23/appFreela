@@ -3,6 +3,8 @@ package com.freela.freelancer.Ibge.Services;
 import com.freela.freelancer.Constantantes.Urls;
 import com.freela.freelancer.Ibge.DTO.CepDTO;
 import com.freela.freelancer.Ibge.DTO.MunicipioDTO;
+import com.freela.freelancer.Ultis.Constantes;
+import com.freela.freelancer.Ultis.RespostaPadrao;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -16,13 +18,14 @@ public class ServicesCep {
         this.webClient = webClientBuilder.baseUrl(Urls.urlBaseCep).build();
     }
 
-    public CepDTO gerCep(String cep){
+    public RespostaPadrao bucaCep(String cep){
         var resultado = webClient.get().
                   uri("/{cep}/json/", cep)
                 .retrieve()
                 .bodyToMono(CepDTO.class)
                 .block();
 
-        return resultado;
+        boolean valido = resultado != null && resultado.getCep() != null;
+        return new RespostaPadrao(valido, valido ? resultado : null, valido ? "" : Constantes.erroCep);
     }
 }

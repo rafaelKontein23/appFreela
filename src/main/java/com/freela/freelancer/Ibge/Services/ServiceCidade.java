@@ -4,13 +4,15 @@ package com.freela.freelancer.Ibge.Services;
 import com.freela.freelancer.Constantantes.Urls;
 import com.freela.freelancer.Ibge.DTO.MunicipioDTO;
 import com.freela.freelancer.Ibge.Execoes.ExceptionCidade;
+import com.freela.freelancer.Ultis.Constantes;
+import com.freela.freelancer.Ultis.RespostaPadrao;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 
 @Service
-public class  ServiceCidade{
+public class ServiceCidade {
 
 
     private final WebClient webClient;
@@ -21,7 +23,7 @@ public class  ServiceCidade{
     }
 
 
-    public List<MunicipioDTO> getMunicipiosPorEstado(String uf){
+    public RespostaPadrao getMunicipiosPorEstado(String uf) {
         var resultado = webClient.get()
                 .uri("/estados/{uf}/municipios", uf)
                 .retrieve()
@@ -29,11 +31,11 @@ public class  ServiceCidade{
                 .collectList()
                 .block();
 
-        if(resultado.isEmpty() || resultado == null ){
-            throw  new ExceptionCidade();
-        }
 
-        return resultado;
+        var valido = resultado != null && !resultado.isEmpty();
+
+
+        return new RespostaPadrao(valido, valido ? resultado : null, valido ? "" : Constantes.erroCidades);
 
     }
 

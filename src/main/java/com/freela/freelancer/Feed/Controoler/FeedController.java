@@ -27,14 +27,10 @@ public class FeedController {
     @PostMapping("/atualiza/feed/trabalhador")
     @PreAuthorize("hasRole('trabalhador')")
     public ResponseEntity<Object> atualizaFeed(@RequestBody FeedDTO  feedDTO, HttpServletRequest request){
-        try {
-            var trabalhadorId = UUID.fromString(String.format((String) request.getAttribute("id"))) ;
-            feedDTO.setIdTrabalhador(trabalhadorId);
-            feedServices.salvarFeed(feedDTO);
-            return ResponseEntity.ok("feed salvo com sucesso");
-        }catch (Exception e){
-            return ResponseEntity.badRequest().body("Algo deu errado ");
-        }
+        var trabalhadorId = UUID.fromString(String.format((String) request.getAttribute("id")));
+        feedDTO.setIdTrabalhador(trabalhadorId);
+        var result = feedServices.salvarFeed(feedDTO);
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/busca/feed/trabalhador")
