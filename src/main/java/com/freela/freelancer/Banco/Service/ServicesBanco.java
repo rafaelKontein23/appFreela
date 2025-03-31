@@ -14,17 +14,16 @@ public class ServicesBanco {
     private WebClient webClient;
 
     public ServicesBanco(WebClient.Builder webClientBuilder){
-        webClientBuilder.baseUrl(Urls.urlbrasilApi);
+       this.webClient = webClientBuilder.baseUrl(Urls.urlbrasilApi).build();
     }
 
     public List<BancoDTO> buscaBanco(){
         var resultado = webClient.get()
-                .uri("/")
+                .uri("/banks/v1")
                 .retrieve()
                 .bodyToFlux(BancoDTO.class)
                 .collectList()
                 .block();
-
         return resultado;
 
     }
