@@ -4,12 +4,12 @@ public class RespostaPadrao {
 
     private Boolean valido;
     private Object dados;
-    private String mensagemErro;
+    private String mensagem;
 
     public RespostaPadrao(Boolean valido, Object dados, String mensafemErro) {
         this.valido = valido;
         this.dados = dados;
-        this.mensagemErro = mensafemErro;
+        this.mensagem = mensafemErro;
     }
 
     public RespostaPadrao() {
@@ -32,10 +32,10 @@ public class RespostaPadrao {
     }
 
     public String getMensagemErro() {
-        return mensagemErro;
+        return mensagem;
     }
 
     public void setMensagemErro(String mensafemErro) {
-        this.mensagemErro = mensafemErro;
+        this.mensagem = mensafemErro;
     }
 }
