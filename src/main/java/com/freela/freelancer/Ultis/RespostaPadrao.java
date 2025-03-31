@@ -6,10 +6,10 @@ public class RespostaPadrao {
     private Object dados;
     private String mensagem;
 
-    public RespostaPadrao(Boolean valido, Object dados, String mensafemErro) {
+    public RespostaPadrao(Boolean valido, Object dados, String mensagem) {
         this.valido = valido;
         this.dados = dados;
-        this.mensagem = mensafemErro;
+        this.mensagem = mensagem;
     }
 
     public RespostaPadrao() {
@@ -23,19 +23,19 @@ public class RespostaPadrao {
         this.valido = valido;
     }
 
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
+
     public Object getDados() {
         return dados;
     }
 
     public void setDados(Object dados) {
         this.dados = dados;
-    }
-
-    public String getMensagemErro() {
-        return mensagem;
-    }
-
-    public void setMensagemErro(String mensafemErro) {
-        this.mensagem = mensafemErro;
     }
 }
