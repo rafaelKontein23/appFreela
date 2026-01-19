@@ -1,10 +1,10 @@
 package com.freela.freelancer.Feed.Services;
 
-import com.freela.freelancer.Feed.DTO.FeedDTO;
-import com.freela.freelancer.Feed.DTO.FeedResponseDTO;
+import com.freela.freelancer.presentation.feed.dto.FeedDTO;
+import com.freela.freelancer.presentation.feed.dto.FeedResponseDTO;
 import com.freela.freelancer.Feed.Entity.FeedEntity;
 import com.freela.freelancer.Feed.Repository.FeedRepository;
-import com.freela.freelancer.Trabalhadores.Entity.TrabalhadorEntidade;
+import com.freela.freelancer.workers.Entity.WorkersEntity;
 import com.freela.freelancer.Ultis.RespostaPadrao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class FeedServices {
 
             feedEntity = feedRepository.findByTrabalhadorEntidadeId(feedDTO.getIdTrabalhador())
                     .orElse(new FeedEntity());
-            TrabalhadorEntidade trabalhador = new TrabalhadorEntidade();
+            WorkersEntity trabalhador = new WorkersEntity();
             trabalhador.setId(feedDTO.getIdTrabalhador());
             feedEntity.setTrabalhadorEntidade(trabalhador);
 

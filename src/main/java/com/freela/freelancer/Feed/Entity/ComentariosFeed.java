@@ -1,6 +1,5 @@
 package com.freela.freelancer.Feed.Entity;
 
-import com.freela.freelancer.Trabalhadores.Entity.TrabalhadorEntidade;
 import jakarta.persistence.*;
 
 import java.util.UUID;

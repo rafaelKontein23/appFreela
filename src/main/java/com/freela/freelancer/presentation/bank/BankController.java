@@ -1,4 +1,4 @@
-package com.freela.freelancer.Banco.Controller;
+package com.freela.freelancer.presentation.bank;
 
 import com.freela.freelancer.Banco.Service.ServicesBanco;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/banco")
-public class ControllerBanco {
+public class BankController {
 
     @Autowired
     private ServicesBanco serviceBanco;

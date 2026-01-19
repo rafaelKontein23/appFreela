@@ -2,23 +2,20 @@ package com.freela.freelancer.Ibge.Services;
 
 
 import com.freela.freelancer.Constantantes.Urls;
-import com.freela.freelancer.Ibge.DTO.MunicipioDTO;
-import com.freela.freelancer.Ibge.Execoes.ExceptionCidade;
+import com.freela.freelancer.presentation.address.dto.MunicipioDTO;
 import com.freela.freelancer.Ultis.Constantes;
 import com.freela.freelancer.Ultis.RespostaPadrao;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.List;
-
 @Service
-public class ServiceCidade {
+public class ServiceCity {
 
 
     private final WebClient webClient;
 
 
-    public ServiceCidade(WebClient.Builder webClientBuilder) {
+    public ServiceCity(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.baseUrl(Urls.urlBaseIbge).build();
     }
 

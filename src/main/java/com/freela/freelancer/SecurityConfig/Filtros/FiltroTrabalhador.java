@@ -5,9 +5,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.hibernate.annotations.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,7 +32,7 @@ public class FiltroTrabalhador  extends OncePerRequestFilter {
         }
 
         if(request.getRequestURI().startsWith("/trabalhador") || request.getRequestURI().startsWith("/feed")){
-            var token = this.jwtProviderTrabalhador.validarToken(header);
+            var token = this.jwtProviderTrabalhador.validToken(header);
             if(token == null){
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 return;

@@ -20,8 +20,8 @@ public class SweggerConfig {
                         .title("App Freelancer")
                         .description("API para gerenciamento de candidatos e vagas")
                         .version("1.0.0"))
-                .addSecurityItem(new SecurityRequirement().addList("BearerAuth")) // Adiciona autenticação global
-                .components(new io.swagger.v3.oas.models.Components()
+                        .addSecurityItem(new SecurityRequirement().addList("BearerAuth")) // Adiciona autenticação global
+                        .components(new io.swagger.v3.oas.models.Components()
                         .addSecuritySchemes("BearerAuth", securityScheme())); // Adiciona o esquema de segurança
     }
 

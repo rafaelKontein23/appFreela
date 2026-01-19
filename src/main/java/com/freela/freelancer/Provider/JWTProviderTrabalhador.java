@@ -11,21 +11,18 @@ import org.springframework.stereotype.Service;
 public class JWTProviderTrabalhador {
 
     @Value("${security.token.secret.trabalhador}")
-    private  String cahveSecreta;
+    private String keySecret;
 
-    public DecodedJWT validarToken(String token) {
-
+    public DecodedJWT validToken(String token) {
         token = token.replace("Bearer ", "");
-        Algorithm algorithm = Algorithm.HMAC256(cahveSecreta);
+        Algorithm algorithm = Algorithm.HMAC256(keySecret);
 
         try {
-            var tokenDecode = JWT.require(algorithm).build().verify(token);
-            return tokenDecode;
-
+            var decodeToken = JWT.require(algorithm).build().verify(token);
+            return decodeToken;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-
     }
 }

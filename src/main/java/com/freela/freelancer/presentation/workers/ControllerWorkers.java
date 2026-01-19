@@ -1,9 +1,9 @@
-package com.freela.freelancer.Trabalhadores.Controller;
+package com.freela.freelancer.presentation.workers;
 
 
-import com.freela.freelancer.Trabalhadores.DTO.LoginDTO;
-import com.freela.freelancer.Trabalhadores.Entity.TrabalhadorEntidade;
-import com.freela.freelancer.Trabalhadores.Services.TrabalhadorUseCase;
+import com.freela.freelancer.presentation.workers.dto.LoginDTO;
+import com.freela.freelancer.workers.Entity.WorkersEntity;
+import com.freela.freelancer.workers.Services.WorkersUseCase;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/trabalhador")
 @Tag(description = "cadastra um trabalhador", name = "cadastraTrabalhador")
 
-public class ControllerTrabalhador {
+public class ControllerWorkers {
 
     @Autowired
-    private TrabalhadorUseCase controllerTrabalhadorUseCase;
+    private WorkersUseCase controllerTrabalhadorUseCase;
 
 
     @PostMapping("/cadastra")
-    public ResponseEntity<Object> cadastraTrabalhador(@Valid @RequestBody TrabalhadorEntidade trabalhador){
+    public ResponseEntity<Object> cadastraTrabalhador(@Valid @RequestBody WorkersEntity trabalhador){
         try {
             var result = controllerTrabalhadorUseCase.salvaCadastroTrabalhador(trabalhador);
             return ResponseEntity.ok(result);

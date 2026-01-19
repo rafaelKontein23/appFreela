@@ -1,7 +1,7 @@
-package com.freela.freelancer.Ibge.controller;
+package com.freela.freelancer.presentation.address;
 
 
-import com.freela.freelancer.Ibge.Services.ServiceCidade;
+import com.freela.freelancer.Ibge.Services.ServiceCity;
 import com.freela.freelancer.Ibge.Services.ServicesCep;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/cidades")
-@Tag(description =  "Busca as cidades no api da ibge", name = "cidades")
-public class ControllerCidades {
+@Tag(description =  "Busca as cidades no api da ibge", name = "Endereços")
+public class AddressController {
 
     @Autowired
-    private ServiceCidade serviceCidade;
+    private ServiceCity serviceCidade;
 
     @Autowired
     private ServicesCep servicesCep;

@@ -1,4 +1,4 @@
-package com.freela.freelancer.Banco.DTO;
+package com.freela.freelancer.presentation.bank.dto;
 
 public class BancoDTO {
 

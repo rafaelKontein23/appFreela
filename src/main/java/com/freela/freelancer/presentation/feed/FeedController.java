@@ -1,10 +1,8 @@
-package com.freela.freelancer.Feed.Controoler;
+package com.freela.freelancer.presentation.feed;
 
 
-import com.freela.freelancer.Feed.DTO.FeedDTO;
-import com.freela.freelancer.Feed.Repository.FeedRepository;
+import com.freela.freelancer.presentation.feed.dto.FeedDTO;
 import com.freela.freelancer.Feed.Services.FeedServices;
-import io.netty.handler.codec.json.JsonObjectDecoder;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
@@ -45,8 +43,5 @@ public class FeedController {
             return  ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
-
-
 
 }

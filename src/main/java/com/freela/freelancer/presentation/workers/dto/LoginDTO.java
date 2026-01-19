@@ -1,4 +1,4 @@
-package com.freela.freelancer.Trabalhadores.DTO;
+package com.freela.freelancer.presentation.workers.dto;
 
 public class LoginDTO {
 

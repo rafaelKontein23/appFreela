@@ -1,4 +1,4 @@
-package com.freela.freelancer.Ibge.DTO;
+package com.freela.freelancer.presentation.address.dto;
 
 public class MunicipioDTO {
 

@@ -1,7 +1,7 @@
 package com.freela.freelancer.Feed.Entity;
 
 
-import com.freela.freelancer.Trabalhadores.Entity.TrabalhadorEntidade;
+import com.freela.freelancer.workers.Entity.WorkersEntity;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class FeedEntity {
 
     @OneToOne
     @JoinColumn(name = "id_trabalhador",  nullable = false)// interliga as tabelas
-    private TrabalhadorEntidade trabalhadorEntidade;
+    private WorkersEntity trabalhadorEntidade;
 
     private String descricao;
     private String fotoPerfil; // interligar com o s3 da amazon
@@ -42,11 +42,11 @@ public class FeedEntity {
         this.id = id;
     }
 
-    public TrabalhadorEntidade getTrabalhadorEntidade() {
+    public WorkersEntity getTrabalhadorEntidade() {
         return trabalhadorEntidade;
     }
 
-    public void setTrabalhadorEntidade(TrabalhadorEntidade trabalhadorEntidade) {
+    public void setTrabalhadorEntidade(WorkersEntity trabalhadorEntidade) {
         this.trabalhadorEntidade = trabalhadorEntidade;
     }
 

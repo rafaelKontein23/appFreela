@@ -1,4 +1,4 @@
-package com.freela.freelancer.Trabalhadores.Entity;
+package com.freela.freelancer.workers.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.Length;
 import java.util.UUID;
 
 @Entity(name = "trabalhadores")
-public class TrabalhadorEntidade {
+public class WorkersEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -74,15 +74,15 @@ public class TrabalhadorEntidade {
     private Integer version = 0; // Valor inicial padrão
 
     // Construtor padrão exigido pelo Hibernate
-    public TrabalhadorEntidade() {
+    public WorkersEntity() {
         this.version = 0; // Inicializa explicitamente
     }
 
     // Construtor parametrizado
-    public TrabalhadorEntidade(String nomeCompleto, String dataNascimento, String cpf, String email, String numero,
-                               String cep, String endereco, String bairro, String cidade, String estado,
-                               String profissao, String especialidade, String regiaoAtendida, String banco,
-                               String agencia, String conta, String tipoConta, String senha) {
+    public WorkersEntity(String nomeCompleto, String dataNascimento, String cpf, String email, String numero,
+                         String cep, String endereco, String bairro, String cidade, String estado,
+                         String profissao, String especialidade, String regiaoAtendida, String banco,
+                         String agencia, String conta, String tipoConta, String senha) {
         this.nomeCompleto = nomeCompleto;
         this.dataNascimento = dataNascimento;
         this.cpf = cpf;

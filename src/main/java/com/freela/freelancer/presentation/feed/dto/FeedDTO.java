@@ -1,6 +1,4 @@
-package com.freela.freelancer.Feed.DTO;
-
-import com.freela.freelancer.Trabalhadores.Entity.TrabalhadorEntidade;
+package com.freela.freelancer.presentation.feed.dto;
 
 import java.util.UUID;
 

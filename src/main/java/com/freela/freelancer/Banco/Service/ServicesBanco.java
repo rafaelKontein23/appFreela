@@ -1,6 +1,6 @@
 package com.freela.freelancer.Banco.Service;
 
-import com.freela.freelancer.Banco.DTO.BancoDTO;
+import com.freela.freelancer.presentation.bank.dto.BancoDTO;
 import com.freela.freelancer.Constantantes.Urls;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;

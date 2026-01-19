@@ -1,4 +1,4 @@
-package com.freela.freelancer.Feed.DTO;
+package com.freela.freelancer.presentation.feed.dto;
 
 public class FeedResponseDTO {
 

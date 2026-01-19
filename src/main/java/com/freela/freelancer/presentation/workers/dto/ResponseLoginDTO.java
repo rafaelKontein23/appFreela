@@ -1,12 +1,12 @@
-package com.freela.freelancer.Trabalhadores.DTO;
+package com.freela.freelancer.presentation.workers.dto;
 
-public class RespostaLoginDTO {
+public class ResponseLoginDTO {
 
     private String token;
     private String cpf;
 
 
-    public RespostaLoginDTO(String token, String cpf) {
+    public ResponseLoginDTO(String token, String cpf) {
         this.token = token;
         this.cpf = cpf;
     }

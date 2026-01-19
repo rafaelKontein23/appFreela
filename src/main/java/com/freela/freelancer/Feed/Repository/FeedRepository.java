@@ -1,6 +1,5 @@
 package com.freela.freelancer.Feed.Repository;
 
-import com.freela.freelancer.Feed.DTO.FeedDTO;
 import com.freela.freelancer.Feed.Entity.FeedEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
