@@ -1,6 +1,6 @@
 package com.freela.freelancer.presentation.bank;
 
-import com.freela.freelancer.Banco.Service.ServicesBanco;
+import com.freela.freelancer.application.bank.ServicesBanco;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

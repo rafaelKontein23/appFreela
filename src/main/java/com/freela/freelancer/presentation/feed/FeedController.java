@@ -2,7 +2,7 @@ package com.freela.freelancer.presentation.feed;
 
 
 import com.freela.freelancer.presentation.feed.dto.FeedDTO;
-import com.freela.freelancer.Feed.Services.FeedServices;
+import com.freela.freelancer.application.feed.FeedServices;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;

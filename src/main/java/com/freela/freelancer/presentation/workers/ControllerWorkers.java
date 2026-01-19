@@ -2,8 +2,8 @@ package com.freela.freelancer.presentation.workers;
 
 
 import com.freela.freelancer.presentation.workers.dto.LoginDTO;
-import com.freela.freelancer.workers.Entity.WorkersEntity;
-import com.freela.freelancer.workers.Services.WorkersUseCase;
+import com.freela.freelancer.infrastructure.persistence.entity.workers.WorkersEntity;
+import com.freela.freelancer.application.workers.WorkersUseCase;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ public class ControllerWorkers {
     @Autowired
     private WorkersUseCase controllerTrabalhadorUseCase;
 
-    @Autowired
-    private ProfissaoUseCase profissaoUseCase;
+/*    @Autowired
+    private ProfissaoUseCase profissaoUseCase;*/
 
 
     @PostMapping("/cadastra")
@@ -37,7 +37,7 @@ public class ControllerWorkers {
         }
     }
 
-    @PostMapping("/cadastrar/profissao")
+/*    @PostMapping("/cadastrar/profissao")
     public ResponseEntity<Object> cadastraProfissao(@Valid @RequestBody ProfissaoRequestDTO profissaoRequestDTO){
         try {
             var result = profissaoUseCase.criarProfissao(profissaoRequestDTO.getNome());
@@ -59,7 +59,7 @@ public class ControllerWorkers {
             var respostaPadrao = new RespostaPadrao(false, null, e.getMessage());
             return  ResponseEntity.badRequest().body(respostaPadrao);
         }
-    }
+    }*/
 
     @PostMapping("/login")
     public ResponseEntity<Object> loginTrabalhador(@Valid @RequestBody LoginDTO trabalhador){

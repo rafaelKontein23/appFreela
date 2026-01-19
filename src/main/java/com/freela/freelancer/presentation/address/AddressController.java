@@ -1,8 +1,8 @@
 package com.freela.freelancer.presentation.address;
 
 
-import com.freela.freelancer.Ibge.Services.ServiceCity;
-import com.freela.freelancer.Ibge.Services.ServicesCep;
+import com.freela.freelancer.application.address.ServiceCity;
+import com.freela.freelancer.application.address.ServicesCep;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
