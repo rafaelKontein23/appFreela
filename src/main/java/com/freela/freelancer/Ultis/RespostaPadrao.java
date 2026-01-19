@@ -4,13 +4,14 @@ public class RespostaPadrao {
 
     private Boolean valido;
     private Object dados;
-    private String mensagemErro;
+    private String mensagem;
 
-    public RespostaPadrao(Boolean valido, Object dados, String mensagemErro) {
+    public RespostaPadrao(Boolean valido, Object dados, String mensagem) {
         this.valido = valido;
         this.dados = dados;
-        this.mensagemErro = mensagemErro;
+        this.mensagem = mensagem;
     }
+
 
     public RespostaPadrao() {
     }
@@ -23,19 +24,19 @@ public class RespostaPadrao {
         this.valido = valido;
     }
 
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
+
     public Object getDados() {
         return dados;
     }
 
     public void setDados(Object dados) {
         this.dados = dados;
-    }
-
-    public String getMensagemErro() {
-        return mensagemErro;
-    }
-
-    public void setMensagemErro(String mensafemErro) {
-        this.mensagemErro = mensafemErro;
     }
 }

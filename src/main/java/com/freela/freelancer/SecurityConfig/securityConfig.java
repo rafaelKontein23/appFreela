@@ -28,6 +28,8 @@ public class securityConfig  {
                     .authorizeHttpRequests(auth -> {
                         auth.requestMatchers("/trabalhador/cadastra").permitAll()
                                 .requestMatchers("/trabalhador/login").permitAll()
+                                .requestMatchers("/trabalhador/retorna/profissoes").permitAll()
+                                .requestMatchers("/trabalhador/cadastrar/profissao").permitAll()
                                 .requestMatchers("/cidades/**").permitAll()
                                 .requestMatchers("/banco/**").permitAll()
                                 .requestMatchers("/swagger-ui/index.html").permitAll()

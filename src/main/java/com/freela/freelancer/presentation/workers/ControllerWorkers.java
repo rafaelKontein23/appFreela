@@ -22,6 +22,9 @@ public class ControllerWorkers {
     @Autowired
     private WorkersUseCase controllerTrabalhadorUseCase;
 
+    @Autowired
+    private ProfissaoUseCase profissaoUseCase;
+
 
     @PostMapping("/cadastra")
     public ResponseEntity<Object> cadastraTrabalhador(@Valid @RequestBody WorkersEntity trabalhador){
@@ -31,6 +34,30 @@ public class ControllerWorkers {
         }catch (Exception e){
             e.printStackTrace();
             return  ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/cadastrar/profissao")
+    public ResponseEntity<Object> cadastraProfissao(@Valid @RequestBody ProfissaoRequestDTO profissaoRequestDTO){
+        try {
+            var result = profissaoUseCase.criarProfissao(profissaoRequestDTO.getNome());
+            return ResponseEntity.ok(result);
+        }catch (Exception e){
+            e.printStackTrace();
+            var respostaPadrao = new RespostaPadrao(false, null, e.getMessage());
+            return  ResponseEntity.badRequest().body(respostaPadrao);
+        }
+    }
+
+    @GetMapping("/retorna/profissoes")
+    public ResponseEntity<Object> retornaProfissoes(){
+        try {
+            var result = profissaoUseCase.buscaProfissoes();
+            return ResponseEntity.ok(result);
+        }catch (Exception e){
+            e.printStackTrace();
+            var respostaPadrao = new RespostaPadrao(false, null, e.getMessage());
+            return  ResponseEntity.badRequest().body(respostaPadrao);
         }
     }
 
