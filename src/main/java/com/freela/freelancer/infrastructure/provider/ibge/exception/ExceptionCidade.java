@@ -1,4 +1,4 @@
-package com.freela.freelancer.infrastructure.provider.ibge.exceptions;
+package com.freela.freelancer.infrastructure.provider.ibge.exception;
 
 public class ExceptionCidade extends  RuntimeException{
     public ExceptionCidade(){

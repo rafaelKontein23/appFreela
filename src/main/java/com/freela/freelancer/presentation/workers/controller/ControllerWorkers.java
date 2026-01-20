@@ -1,4 +1,4 @@
-package com.freela.freelancer.presentation.workers;
+package com.freela.freelancer.presentation.workers.controller;
 
 
 import com.freela.freelancer.presentation.workers.dto.LoginDTO;

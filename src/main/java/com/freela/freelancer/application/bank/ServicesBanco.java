@@ -1,7 +1,7 @@
 package com.freela.freelancer.application.bank;
 
 import com.freela.freelancer.presentation.bank.dto.BancoDTO;
-import com.freela.freelancer.Constantantes.Urls;
+import com.freela.freelancer.infrastructure.provider.ibge.constants.constants.Urls;
 import com.freela.freelancer.Ultis.RespostaPadrao;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;

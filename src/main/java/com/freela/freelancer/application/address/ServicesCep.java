@@ -1,8 +1,7 @@
 package com.freela.freelancer.application.address;
 
-import com.freela.freelancer.Constantantes.Urls;
+import com.freela.freelancer.infrastructure.provider.ibge.constants.constants.Urls;
 import com.freela.freelancer.presentation.address.dto.CepDTO;
-import com.freela.freelancer.Ultis.Constantes;
 import com.freela.freelancer.Ultis.RespostaPadrao;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;

@@ -1,4 +1,4 @@
-package com.freela.freelancer.presentation.bank;
+package com.freela.freelancer.presentation.bank.controller;
 
 import com.freela.freelancer.application.bank.ServicesBanco;
 import io.swagger.v3.oas.annotations.tags.Tag;

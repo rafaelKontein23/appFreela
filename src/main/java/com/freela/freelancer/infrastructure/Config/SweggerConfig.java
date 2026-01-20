@@ -1,4 +1,4 @@
-package com.freela.freelancer.Config;
+package com.freela.freelancer.infrastructure.Config;
 
 
 import io.swagger.v3.oas.models.security.SecurityRequirement;

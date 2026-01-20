@@ -1,6 +1,6 @@
-package com.freela.freelancer.SecurityConfig.Filtros;
+package com.freela.freelancer.infrastructure.security.Filtros;
 
-import com.freela.freelancer.Provider.JWTProviderTrabalhador;
+import com.freela.freelancer.infrastructure.security.Provider.JWTProviderTrabalhador;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

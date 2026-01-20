@@ -1,6 +1,6 @@
-package com.freela.freelancer.SecurityConfig;
+package com.freela.freelancer.infrastructure.security;
 
-import com.freela.freelancer.SecurityConfig.Filtros.FiltroTrabalhador;
+import com.freela.freelancer.infrastructure.security.Filtros.FiltroTrabalhador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

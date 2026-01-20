@@ -1,4 +1,4 @@
-package com.freela.freelancer.presentation.feed;
+package com.freela.freelancer.presentation.feed.controller;
 
 
 import com.freela.freelancer.presentation.feed.dto.FeedDTO;

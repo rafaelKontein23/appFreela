@@ -1,4 +1,4 @@
-package com.freela.freelancer.Provider;
+package com.freela.freelancer.infrastructure.security.Provider;
 
 
 import com.auth0.jwt.JWT;

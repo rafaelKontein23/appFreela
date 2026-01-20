@@ -1,4 +1,4 @@
-package com.freela.freelancer.presentation.address;
+package com.freela.freelancer.presentation.address.controller;
 
 
 import com.freela.freelancer.application.address.ServiceCity;
