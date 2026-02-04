@@ -3,6 +3,7 @@ package com.freela.freelancer.presentation.address.controller;
 
 import com.freela.freelancer.application.address.ServiceCity;
 import com.freela.freelancer.application.address.ServicesCep;
+import com.freela.freelancer.presentation.share.ResponseDefault;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,31 +15,29 @@ import org.springframework.web.bind.annotation.*;
 public class AddressController {
 
     @Autowired
-    private ServiceCity serviceCidade;
+    private ServiceCity serviceCity;
 
     @Autowired
     private ServicesCep servicesCep;
 
 
     @PostMapping("/{uf}")
-    public ResponseEntity<Object> buscaCidades(@PathVariable String uf){
+    public ResponseEntity<Object> findCity(@PathVariable String uf){
         try {
-            var resultado = serviceCidade.getMunicipiosPorEstado(uf);
-            return ResponseEntity.ok(resultado);
+            ResponseDefault result = serviceCity.getMunicipiosPorEstado(uf);
+            return ResponseEntity.ok(result);
         }catch (Exception e){
-            e.printStackTrace();
             return  ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
     @CrossOrigin(origins = "*")
     @GetMapping("/{CEP}/json/")
-    public ResponseEntity<Object> buscaCep(@PathVariable String CEP){
+    public ResponseEntity<Object> finCep(@PathVariable String CEP){
         try {
-            var resultado = servicesCep.bucaCep(CEP);
-            return ResponseEntity.ok(resultado);
+            ResponseDefault result = servicesCep.findCepServices(CEP);
+            return ResponseEntity.ok(result);
         }catch (Exception e){
-            e.printStackTrace();
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

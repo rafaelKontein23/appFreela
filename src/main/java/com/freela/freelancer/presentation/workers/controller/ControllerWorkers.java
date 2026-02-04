@@ -22,9 +22,6 @@ public class ControllerWorkers {
     @Autowired
     private WorkersUseCase controllerTrabalhadorUseCase;
 
-/*    @Autowired
-    private ProfissaoUseCase profissaoUseCase;*/
-
 
     @PostMapping("/cadastra")
     public ResponseEntity<Object> cadastraTrabalhador(@Valid @RequestBody WorkersEntity trabalhador){

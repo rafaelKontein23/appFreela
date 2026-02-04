@@ -1,31 +1,34 @@
 package com.freela.freelancer.application.address;
 
-import com.freela.freelancer.infrastructure.provider.ibge.constants.constants.Urls;
 import com.freela.freelancer.presentation.address.dto.CepDTO;
-import com.freela.freelancer.Ultis.RespostaPadrao;
+import com.freela.freelancer.presentation.share.ResponseDefault;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Service
 public class ServicesCep {
 
-    private WebClient webClient;
+    private final String URL_BASE_CEP = "https://viacep.com.br/ws/";
+    private final String MASSAGE_ERROR_CEP = "Erro ao buscar Cep";
+    private final int VALID_ERROR = 8;
+
+    private final WebClient webClient;
 
     public ServicesCep(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl(Urls.urlBaseCep).build();
+        this.webClient = webClientBuilder.baseUrl(URL_BASE_CEP).build();
     }
 
-    public RespostaPadrao bucaCep(String cep){
-        if(cep.length() < 8){
-            return new RespostaPadrao(false, null, Constantes.erroCep);
+    public ResponseDefault findCepServices(String cep) {
+        if (cep.length() < VALID_ERROR) {
+            return new ResponseDefault(false, MASSAGE_ERROR_CEP, null);
         }
-        var resultado = webClient.get().
-                  uri("/{cep}/json/", cep)
+        var result = webClient.get().
+                uri("/{cep}/json/", cep)
                 .retrieve()
                 .bodyToMono(CepDTO.class)
                 .block();
 
-        boolean valido = resultado != null && resultado.getCep() != null;
-        return new RespostaPadrao(valido, valido ? resultado : null, valido ? "" : Constantes.erroCep);
+        boolean valid = result != null && result.getCep() != null;
+        return new ResponseDefault(valid, valid ? null : MASSAGE_ERROR_CEP, result);
     }
 }
